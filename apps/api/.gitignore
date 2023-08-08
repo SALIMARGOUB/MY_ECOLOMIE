@@ -1,0 +1,20 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+/import/en.openfoodfacts.org.products_err.csv
+/import/en.openfoodfacts.org.products_out.csv
+/import/en.openfoodfacts.org.products.csv
+/import/en.communes-test.csv
+/import/parts/

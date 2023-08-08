@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isRegistering ? 'INSCRIPTION' : 'CONNEXION' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="padding">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+      <div class="logo">
+        <img src="assets/img/logo.png" alt="logo">
+      </div>
+
+      <ion-item fill="solid" class="ion-margin-top">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input color="sucess" type="mail" [(ngModel)]="email" name="Email" placeholder="Adresse email"
+          required></ion-input>
+      </ion-item>
+
+      <ion-item fill="solid" class="ion-margin-top">
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input color="primary" type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe"
+          required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="isRegistering" fill="solid" class="ion-margin-top">
+        <ion-label position="floating">Prenom</ion-label>
+        <ion-input color="sucess" type="text" [(ngModel)]="firstname" name="firstname" placeholder="Prénom"
+          required></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="isRegistering" fill="solid" class="ion-margin-top">
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input color="sucess" type="text" [(ngModel)]="lastname" name="lastname" placeholder="Nom"
+          required></ion-input>
+      </ion-item>
+
+
+
+      <ion-item lines="none">
+        <ion-button color="light" slot="end" fill="clear">Mot de passe oublié ?</ion-button>
+      </ion-item>
+
+      <ion-button color="light" expand="block" shape="round" fill="outline" type="submit"
+        [disabled]="!loginForm.form.valid">
+        {{ isRegistering ? 'Inscription' : 'Connexion' }}
+      </ion-button>
+
+      <br>
+
+      <ion-button color="tertiary" expand="block" shape="round" (click)="isRegistering = !isRegistering">
+        {{ isRegistering ? 'Aller à la connexion' : 'Aller à l\'inscription' }}
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

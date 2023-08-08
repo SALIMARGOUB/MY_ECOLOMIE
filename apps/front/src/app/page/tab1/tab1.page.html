@@ -1,0 +1,60 @@
+<ion-header translucent="true">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="secondary">
+      <ion-button routerLink="/login" color="warning" *ngIf="!isLoggedIn">
+        <ion-icon slot="icon-only" size="large" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" *ngIf="isLoggedIn" (click)="onLogout()">
+        <ion-icon slot="icon-only" size="large" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-uppercase">Ecolomie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card color="primary" class="ion-padding" routerLink="/expiration-proche">
+    <ion-card-header>
+      <ion-card-title class="ion-text-uppercase">Date d'expiration proche</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card class="transparent-card">
+    <ion-card-content>
+      <ion-toolbar>
+        <ion-title class="ion-text-uppercase ion-text-center">Emplacements</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="success" (click)="createNewStoragePrompt()">
+            <ion-icon slot="icon-only" name="add"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-card color="warning" class="ion-padding" *ngFor="let storage of storages">
+    <ion-item-sliding>
+      <ion-item color="warning">
+        <ion-card-header>
+          <ion-card-title class="ion-text-uppercase ion-text-center">{{ storage.name }}</ion-card-title>
+        </ion-card-header>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteStorage(storage)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+
+  <ion-card color="success" class="ion-padding" routerLink="/mes-listes">
+    <ion-card-header>
+      <ion-card-title class="ion-text-uppercase">Mes Listes</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+
+
