@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ecolomie</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
+    <form #productForm="ngForm" (ngSubmit)="addProduct()" >
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">
+          <ion-input type="text" [(ngModel)]="product.name" name="name" required placeholder="Nom du produit"></ion-input>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input type="number" [(ngModel)]="product.quantity" name="quantity" label="Quantité"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Catégorie</ion-label>
+          <ion-select [(ngModel)]="product.category" name="category" aria-label="Catégorie">
+            <ion-select-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-card-content>
+      <ion-button type="submit" fill="clear" [disabled]="!productForm.valid">Ajouter</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

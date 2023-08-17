@@ -14,7 +14,7 @@ export class NewproductPage {
     dlc: string;
     nutriscore: string;
     category: string;
-    storage: string;
+    storage: string; 
     name: string;
   };
 
@@ -39,7 +39,7 @@ export class NewproductPage {
     this.product.storage = '/api/storages/' + this.product.storage;
 
     try {
-      const response = await this.apiService.addProduct(this.product).toPromise();
+      // const response = await this.apiService.addProduct(this.product);
 
       const toast = await this.toastController.create({
         message: 'Produit ajouté avec succès.',
@@ -56,7 +56,7 @@ export class NewproductPage {
         color: 'danger'
       });
       toast.present();
-    }
+    } 
   }
 
   getCategories() {
